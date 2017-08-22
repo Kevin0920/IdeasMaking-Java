@@ -8,7 +8,7 @@
 <title>Home Page</title>
 </head>
 <body>
-<h1>>Welcome <c:out value="${currentUser.firstname}"></c:out></h1>
+<h1>Welcome <c:out value="${currentUser.firstname}"></c:out></h1>
 
 	<h3>First Name: ${currentUser.firstname }</h3>
 	<h3>Last Name: ${currentUser.lastname }</h3>

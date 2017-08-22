@@ -1,10 +1,10 @@
-package com.patrick.loginregistration.services;
+package com.kevin.loginregistration.services;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.patrick.loginregistration.models.User;
-import com.patrick.loginregistration.repositories.RoleRepo;
-import com.patrick.loginregistration.repositories.UserRepo;
+import com.kevin.loginregistration.models.User;
+import com.kevin.loginregistration.repositories.RoleRepo;
+import com.kevin.loginregistration.repositories.UserRepo;
 
 @Service
 public class UserService {

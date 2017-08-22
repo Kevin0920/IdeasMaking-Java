@@ -1,4 +1,4 @@
-package com.patrick.loginregistration.models;
+package com.kevin.loginregistration.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
@@ -17,7 +17,7 @@ public class User {
     @Size(min=1, message="Last name must be at least 1 character")
     private String lastname;
     private String email;
-    @Size(min=9, message = "Pass must be greater than 9")
+    @Size(min=5, message = "Pass must be greater than 5")
     private String password;
     @Transient
     private String passwordConfirmation;

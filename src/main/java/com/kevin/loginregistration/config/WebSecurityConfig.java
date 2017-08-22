@@ -1,4 +1,4 @@
-package com.patrick.loginregistration.config;
+package com.kevin.loginregistration.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;

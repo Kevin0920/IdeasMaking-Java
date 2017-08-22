@@ -1,4 +1,4 @@
-package com.patrick.loginregistration.services;
+package com.kevin.loginregistration.services;
 
 import java.util.*;
 import org.springframework.security.core.*;
@@ -8,9 +8,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.patrick.loginregistration.models.Role;
-import com.patrick.loginregistration.models.User;
-import com.patrick.loginregistration.repositories.UserRepo;
+import com.kevin.loginregistration.models.Role;
+import com.kevin.loginregistration.models.User;
+import com.kevin.loginregistration.repositories.UserRepo;
 
 @Service
 public class UserDetailsServiceImplementation implements UserDetailsService{

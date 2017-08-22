@@ -1,11 +1,11 @@
-package com.patrick.loginregistration.validator;
+package com.kevin.loginregistration.validator;
 
 import org.springframework.validation.Validator;
 
+import com.kevin.loginregistration.models.User;
+
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-
-import com.patrick.loginregistration.models.User;
 
 @Component
 public class UserValidator implements Validator{

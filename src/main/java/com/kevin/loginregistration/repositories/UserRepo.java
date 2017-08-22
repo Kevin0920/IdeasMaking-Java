@@ -1,9 +1,9 @@
-package com.patrick.loginregistration.repositories;
+package com.kevin.loginregistration.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.patrick.loginregistration.models.User;
+import com.kevin.loginregistration.models.User;
 
 @Repository
 public interface UserRepo extends CrudRepository<User, Long>{

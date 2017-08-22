@@ -1,4 +1,4 @@
-package com.patrick.loginregistration.models;
+package com.kevin.loginregistration.models;
 
 import javax.persistence.*;
 import java.util.*;

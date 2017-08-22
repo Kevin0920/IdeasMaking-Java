@@ -1,4 +1,4 @@
-package com.patrick.loginregistration.controllers;
+package com.kevin.loginregistration.controllers;
 
 import java.security.Principal;
 
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.patrick.loginregistration.models.*;
-import com.patrick.loginregistration.services.UserService;
-import com.patrick.loginregistration.validator.UserValidator;
+import com.kevin.loginregistration.models.*;
+import com.kevin.loginregistration.services.UserService;
+import com.kevin.loginregistration.validator.UserValidator;
 
 @Controller
 public class UserController {
@@ -38,7 +38,7 @@ public class UserController {
 		if (logout != null) {
 			model.addAttribute("logoutMessage", "Logout successful!!");
 		}
-		return "loginPage.jsp";
+		return "loginPage";
 	}
 	
 	
@@ -47,7 +47,7 @@ public class UserController {
         // NEW
         userValidator.validate(user, result);
         if (result.hasErrors()) {
-            return "loginPage.jsp";
+            return "loginPage";
         }
         
         userService.saveWithUserRole(user);
@@ -59,6 +59,6 @@ public class UserController {
         // 1
         String email = principal.getName();
         model.addAttribute("currentUser", userService.findByEmail(email));
-        return "home.jsp";
+        return "home";
     }
 }
