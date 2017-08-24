@@ -21,6 +21,10 @@
             <form:label path="email">Email:</form:label>
             <form:input path="email"/>
         </p>
+         <p>
+            <form:label path="alias">Alias:</form:label>
+            <form:input path="alias"/>
+        </p>
         <p>
             <form:label path="firstname">First Name:</form:label>
             <form:input path="firstname"/>

@@ -3,6 +3,7 @@ package com.kevin.loginregistration.models;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 
+
 import java.util.*;
 
 @Entity
@@ -16,20 +17,50 @@ public class User {
     private String firstname;
     @Size(min=1, message="Last name must be at least 1 character")
     private String lastname;
+    @Size(min=1, message="Alias must be at least 1 character")
+    private String alias;
     private String email;
-    @Size(min=5, message = "Pass must be greater than 5")
+    @Size(min=8, message = "Pass must be greater than 8")
     private String password;
     @Transient
     private String passwordConfirmation;
     private Date createdAt;
     private Date updatedAt;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(
-        name = "users_roles", 
-        joinColumns = @JoinColumn(name = "user_id"), 
-        inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private List<Role> roles;
     
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "users_ideas", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "idea_id")
+        )
+    private List<Idea> ideas;
+    
+    @OneToMany(mappedBy="poster", fetch = FetchType.LAZY)
+    private List<Idea> postIdeas;
+    
+    
+    
+    
+    
+    
+    
+  
+    public List<Idea> getPostIdeas() {
+		return postIdeas;
+	}
+
+	public void setPostIdeas(List<Idea> postIdeas) {
+		this.postIdeas = postIdeas;
+	}
+
+	public List<Idea> getIdeas() {
+		return ideas;
+	}
+
+	public void setIdeas(List<Idea> ideas) {
+		this.ideas = ideas;
+	}
+	
     public User() {
     }
 
@@ -97,16 +128,17 @@ public class User {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
     
-    @PrePersist
+    
+    public String getAlias() {
+		return alias;
+	}
+
+	public void setAlias(String alias) {
+		this.alias = alias;
+	}
+
+	@PrePersist
     protected void onCreate(){
     this.setCreatedAt(new Date());
     }

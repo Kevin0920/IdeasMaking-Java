@@ -1,22 +1,25 @@
 package com.kevin.loginregistration.services;
+import java.util.List;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.kevin.loginregistration.models.Idea;
 import com.kevin.loginregistration.models.User;
-import com.kevin.loginregistration.repositories.RoleRepo;
+import com.kevin.loginregistration.repositories.IdeaRepo;
 import com.kevin.loginregistration.repositories.UserRepo;
 
 @Service
 public class UserService {
 	
 	private UserRepo userRepo;
-	private RoleRepo roleRepo;
+	private IdeaRepo ideaRepo;
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
     
-    public UserService(UserRepo userRepo, RoleRepo roleRepo, BCryptPasswordEncoder bCryptPasswordEncoder)     {
+    public UserService(UserRepo userRepo, IdeaRepo ideaRepo, BCryptPasswordEncoder bCryptPasswordEncoder)     {
         this.userRepo = userRepo;
-        this.roleRepo = roleRepo;
+        this.ideaRepo = ideaRepo;
         this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
     
@@ -24,14 +27,12 @@ public class UserService {
     // 1
     public void saveWithUserRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(roleRepo.findByName("ROLE_USER"));
         userRepo.save(user);
     }
      
      // 2 
     public void saveUserWithAdminRole(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setRoles(roleRepo.findByName("ROLE_ADMIN"));
         userRepo.save(user);
     }    
     
@@ -39,5 +40,51 @@ public class UserService {
     public User findByEmail(String email) {
         return userRepo.findByEmail(email);
     }
+
+
+	public List<Idea> allIdeas() {
+		return (List<Idea>) ideaRepo.findAll();
+	}
+
+
+	public void createIdea(Idea idea) {
+		ideaRepo.save(idea);
+		
+	}
+
+
+	public Object findOneUser(Long id) {
+		return userRepo.findOne(id);
+	}
+
+
+	public void delete(Long id) {
+		ideaRepo.delete(id);	
+	}
+
+
+	public void ideaLike(Long id, Long user_id) {
+		User user = userRepo.findOne(id);
+		Idea idea = ideaRepo.findOne(user_id);
+		idea.getUsers().add(user);
+		ideaRepo.save(user);
+		
+	}
+
+
+	public Idea findOneIdea(Long id) {
+		return ideaRepo.findOne(id);
+	}
+
+
+	public void saveUser(User user) {
+		userRepo.save(user);
+	}
+
+
+	public List<User> allUsers() {
+	
+		return (List<User>) userRepo.findAll();
+	}
 }
 

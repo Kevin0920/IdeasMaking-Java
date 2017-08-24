@@ -2,13 +2,12 @@ package com.kevin.loginregistration.services;
 
 import java.util.*;
 import org.springframework.security.core.*;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.kevin.loginregistration.models.Role;
 import com.kevin.loginregistration.models.User;
 import com.kevin.loginregistration.repositories.UserRepo;
 
@@ -33,10 +32,6 @@ public class UserDetailsServiceImplementation implements UserDetailsService{
 	
 	private List<GrantedAuthority> getAuthorities(User user){
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
-		for(Role role : user.getRoles()) {
-			GrantedAuthority grantedAuthority = new SimpleGrantedAuthority(role.getName());
-			authorities.add(grantedAuthority);
-		}
 		return authorities;
 	}
 
